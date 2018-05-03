@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css" />
+    <title>Tri-Valley Coder Dojo Check In</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: rgb(236, 236, 236);
+        }
+
+    </style>
+
+    <center>
+        <h1 style="font-size: 35px;" >Welcome to Coder Dojo {{title}} {{month}}/{{date}}/{{year}} </h1>
+                
+        <form action="/getPerson" method="POST" style="margin: 10px 10px 10px 10px" >
+
+            <input type="text" name="code" placeholder="Enter Code" id="idNumber" style="padding: 2px; color: green; font-family: Arial; font-size: 20px; text-align:center; background-color: rgb(236, 236, 236)" />
+            <br><br>
+            <button type="submit" class="btn indigo darken-1">Check In</button>
+        </form>
+        <p>Not yet registered? <a href="/register">Register</a></p>
+    </center>
+</body>
+</html>

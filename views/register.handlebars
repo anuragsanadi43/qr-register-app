@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/bootstrap_simplex.css">
+    <title>Register Page</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: rgb(236, 236, 236);
+            margin: 10px;
+        }
+
+        input {
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        @media(max-width: 550px) {
+            .wrapper {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+
+    {{#if unicode}}
+    <p class="alert alert-danger "> <b><!--&#10007;--> &#x2612;  </b> {{err}}</p>
+    {{/if}}
+
+    <form method="post" action="/register">
+        <div class="wrapper">
+            <input type="text" name="first" class="form-control" placeholder="First Name" /> 
+            <input type="text" name="last" class="form-control" placeholder="Last Name" /> 
+            <input type="text" name="lastConfirm" class="form-control" placeholder="Confirm Last Name" />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" >Register</button>
+    </form>
+    
+
+</body>
+</html>
