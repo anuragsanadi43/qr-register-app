@@ -36,7 +36,7 @@ run ...
 
 This should start the project at port 3000.
 
-navigate to "localhost:3000/session/ you can enter any name here for example 'Oracle' "
+navigate to "localhost:3000/session/...any name here ..... you can enter any name here for example 'Oracle' "
 
 This should open up the sign-in page. I have not added any functionality to this page yet.
 
