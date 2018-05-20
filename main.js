@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 // This is the Member model
 const Member = require("./models/members");
 
-
 mongoose.connect("mongodb://localhost/qr-register", function(err) {
     if(err) {
         throw err;
@@ -72,11 +71,8 @@ app.post("/register", function(req, res) {
                 first: req.body.first,
                 last: req.body.last
             });
-        });
-
-               
+        });       
     }
-
 });
 
 app.listen(3000, function() {
