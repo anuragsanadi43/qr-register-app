@@ -63,7 +63,7 @@ app.post("/register", function(req, res) {
     } else if ((req.body.last === req.body.lastConfirm) && (req.body.last !== "" && req.body.lastConfirm !== "") && req.body.first !== "") {
         
         var member = new Member();
-        member.first = req.body.first;
+		member.first = req.body.first;
         member.last = req.body.last;
         member.save(function() {
             console.log("Data inserted");
