@@ -2,7 +2,6 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const lodash = require("lodash");
 
 // This is the Member model
 const Member = require("./models/members");
@@ -44,7 +43,7 @@ app.post("/getPerson", function(req, res) {
     res.render("second");
 });
 
-app.get("/register", function(req, res) {
+app.get("/register", function(res) {
     res.render("register", {
         unicode: false
     });
