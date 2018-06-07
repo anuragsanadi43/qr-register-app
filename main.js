@@ -2,6 +2,7 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const lodash = require("lodash");
 
 // This is the Member model
 const Member = require("./models/members");
