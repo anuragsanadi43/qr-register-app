@@ -39,15 +39,16 @@
     </style>
 
 
-    {{#if unicode}}
-    <p class="alert alert-danger "> <b><!--&#10007;--> &#x2612;  </b> {{err}}</p>
-    {{/if}}
+    <% if(unicode) { %>
+    <p class="alert alert-danger "> <b><!--&#10007;--> &#x2612;  </b><%= err %></p>
+    <% } %>
 
     <form method="post" action="/register">
         <div class="wrapper">
             <input type="text" name="first" class="form-control" placeholder="First Name" /> 
             <input type="text" name="last" class="form-control" placeholder="Last Name" /> 
             <input type="text" name="lastConfirm" class="form-control" placeholder="Confirm Last Name" />
+			
         </div>
         <br>
         <button type="submit" class="btn btn-primary" >Register</button>

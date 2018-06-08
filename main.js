@@ -1,7 +1,7 @@
 const express = require("express");
-const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const ejs = require("ejs"); // might show as an unused import but is still required
 
 // This is the Member model
 const Member = require("./models/members");
@@ -16,25 +16,29 @@ mongoose.connect("mongodb://localhost/qr-register", function(err) {
 
 const app = express();
 
-// Handlebars and static folder setup
-app.engine("handlebars", handlebars());
-app.set("view engine", "handlebars");
+// ejs (embedded javascript) and static folder setup
+app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // Body parser setup
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.json());	
 
 const today = new Date();
 
+// todays session route
+var currentSession = "hello";
+
 // Root
 app.get("/session/:id", function(req, res) {
+	currentSession = req.params.id;
+
     res.render("index", {
         title: req.params.id,
         month: today.getMonth() + 1,
         date: today.getDate(),
         year: today.getFullYear(),
-        day: today.getDay()
+		day: today.getDay(),
     });
 });
 
@@ -43,10 +47,10 @@ app.post("/getPerson", function(req, res) {
     res.render("second");
 });
 
-app.get("/register", function(res) {
+app.get("/register", function(req, res) {
     res.render("register", {
-        unicode: false
-    });
+		unicode: false
+	});	
 });
 
 app.post("/register", function(req, res) {
@@ -69,7 +73,8 @@ app.post("/register", function(req, res) {
             console.log("Data inserted");
             res.render("success", {
                 first: req.body.first,
-                last: req.body.last
+				last: req.body.last,
+				current: currentSession
             });
         });       
     }
