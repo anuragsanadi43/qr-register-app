@@ -6,6 +6,7 @@ const ejs = require("ejs"); // might show as an unused import but is still requi
 // This is the Member model
 const Member = require("./models/members");
 
+// connecting to mongodb database name=qr-register
 mongoose.connect("mongodb://localhost/qr-register", function(err) {
     if(err) {
         throw err;
@@ -14,10 +15,13 @@ mongoose.connect("mongodb://localhost/qr-register", function(err) {
     }
 });
 
+// creating express app
 const app = express();
 
 // ejs (embedded javascript) and static folder setup
 app.set("view engine", "ejs");
+
+// static folder
 app.use(express.static("public"));
 
 // Body parser setup
@@ -27,10 +31,11 @@ app.use(bodyParser.json());
 const today = new Date();
 
 // todays session route
-var currentSession = "hello";
+var currentSession = "";
 
 // Root
 app.get("/session/:id", function(req, res) {
+
 	currentSession = req.params.id;
 
     res.render("index", {
