@@ -32,7 +32,7 @@ MongoClient.connect(url, function (err, client) {
 	const db = client.db(dbName);
 
 	client.close();
-});	
+});
 
 const date = new Date();
 
@@ -71,12 +71,12 @@ app.post("/register", function (req, res) {
 		})
 	} else if (first !== "" && last !== "" && lastConfirm !== "") {
 		// Inserting documents in mongodb
-		MongoClient.connect(url, function(err, client) {
+		MongoClient.connect(url, function (err, client) {
 			assert.equal(null, err);
 
 			const db = client.db(dbName);
 
-			insertDocuments(db, first, last, generateCode(first, last), function() {
+			insertDocuments(db, first, last, generateCode(first, last), function () {
 				client.close();
 				console.log("Inserted documents");
 				res.render("success", {
