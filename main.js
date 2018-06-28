@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const assert = require("assert");
 const MongoClient = require("mongodb").MongoClient;
 const path = require("path");
-const { insertDocuments } = require("./models/crud.js");
+const { insertDocuments, findDocuments } = require("./models/crud.js");
 const { generateCode } = require("./models/stringGenerator.js");
 
 const app = express();
@@ -88,6 +88,20 @@ app.post("/register", function (req, res) {
 			});
 		});
 	}
+});
+
+app.post("/getPerson", function(req, res) {
+	MongoClient.connect(url, function(err, client) {
+		assert.equal(null, err);
+		console.log("Fetcher connected successfully...");
+		
+		const db = client.db(dbName);
+		findDocuments(db, req.body.code, function(member) {
+			//var dojoMember = member
+			console.log(member[0].first); 	
+			client.close();
+		});
+	});
 });
 
 
