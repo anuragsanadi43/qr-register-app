@@ -99,6 +99,9 @@ app.post("/getPerson", function(req, res) {
 		findDocuments(db, req.body.code, function(member) {
 			//var dojoMember = member
 			console.log(member[0].first); 	
+			res.render("registered", {
+				confirmation: `${member[0].first} ${member[0].last} has been checked in for today's session`
+			});
 			client.close();
 		});
 	});
