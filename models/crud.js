@@ -14,3 +14,18 @@ module.exports.insertDocuments = function(db, firstName, lastName, code, callbac
 		callback(result);
 	});
 }
+
+module.exports.findDocuments = function(db, code, callback) {
+	// database collection
+	const collection = db.collection("members");
+	
+	// Finding user
+	collection.find({'code': code}).toArray(function(err, docs) {
+		if(err) {
+			console.log("Error in finding person");
+		}
+		// console.log(docs);
+		// console.log("From crud.js")
+		callback(docs);
+	});
+}
