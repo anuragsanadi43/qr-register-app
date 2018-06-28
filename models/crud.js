@@ -8,8 +8,11 @@ module.exports.insertDocuments = function(db, firstName, lastName, code, callbac
 	// Collection
 	const collection = db.collection("members");
 	collection.insertMany([
-		{first: firstName, last: lastName, code: code} 
+		{first: firstName, last: lastName, code: code, registered: false} 
 	], function(err, result) {
+		if(err){
+			throw err
+		}
 		console.log("Inserted documents into the collection");
 		callback(result);
 	});
