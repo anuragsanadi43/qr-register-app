@@ -6,6 +6,8 @@ const path = require("path");
 const { insertDocuments, findDocuments } = require("./models/crud.js");
 const { generateCode } = require("./models/stringGenerator.js");
 
+// Some comments
+
 const app = express();
 const port = process.env.PORT || 3000; // local port
 const host = process.env.IP; // local address
