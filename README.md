@@ -23,7 +23,7 @@ If you have mongodb installed correctly then run these commands
 ```
 
 ```bash
-    # In this first terminal run..
+    # In this second terminal run..
     mongo
 ```
 This should start mongodb correctly.
